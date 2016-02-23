@@ -13,16 +13,16 @@ See AutoIngestTool README: <https://github.com/linitix/autoingesttool>
 const getAppStoreReport = require('get-appstore-report');
 
 // customizing options up-front
-const getAppStoreReport = require('get-appstore-report')({ someOption: true });
+const getAppStoreReport = require('get-appstore-report')({ report_type: 'Sales' });
 
 // making an instance available to other files
 const getAppStoreReport = require('get-appstore-report');
-getAppStoreReport.myCustomInstance = getAppStoreReport({ someOption: true });
+getAppStoreReport.myCustomInstance = getAppStoreReport({ report_type: 'Sales' });
 // freeing memory: delete getAppStoreReport.myCustomInstance
 
-// ES5: injecting Promise dependency
-var Promise = require('my-promise-lib');
-var getAppStoreReport = require('get-appstore-report')({ Promise: Promise });
+// if Promise isn't defined
+global.Promise = require('promise-module');
+var getAppStoreReport = require('get-appstore-report');
 ```
 
 ### Download an iTunes Connect Report

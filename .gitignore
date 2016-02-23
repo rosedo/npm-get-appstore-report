@@ -1,5 +1,8 @@
 # private
-/test/
+/test/private.json
+
+# output data
+/test/outputDirectory/
 
 # built content
 /release/

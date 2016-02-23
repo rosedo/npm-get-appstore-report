@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/rosedo/npm-get-appstore-report.git"
   },
-  "version": "1.2.0",
+  "version": "1.2.3",
   "description": "Download an iTunes Connect Report using AutoIngestTool",
   "scripts": {
     "test": "if test -f node_modules/.bin/mocha; then node_modules/.bin/mocha test; else mocha test; fi"
