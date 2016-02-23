@@ -1,24 +1,28 @@
 {
-  "name": "apple-sync-reports",
-  "main": "appleSyncReports.js",
+  "name": "get-appstore-report",
+  "main": "getAppStoreReport.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rosedo/npm-apple-sync-reports.git"
+    "url": "https://github.com/rosedo/npm-get-appstore-report.git"
   },
   "version": "1.2.0",
-  "description": "TODO description",
+  "description": "Download an iTunes Connect Report using AutoIngestTool",
   "scripts": {
     "test": "if test -f node_modules/.bin/mocha; then node_modules/.bin/mocha test; else mocha test; fi"
   },
   "author": "Dominic Rose",
   "license": "ISC",
   "dependencies": {
-    "lodash": ""
+    "autoingesttool": "",
+    "debug": "",
+    "iconv-lite": "",
+    "lodash": "",
+    "node-icu-charset-detector": ""
   },
   "devDependencies": {
     "mocha": ""
   },
   "engines": {
-    "node" : ">=0.12"
+    "node": ">=0.12"
   }
 }

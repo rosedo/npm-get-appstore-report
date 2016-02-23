@@ -6,8 +6,11 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/..
 (cd "$DIR" && npm test) || exit 1
 rm -r "$DIR/release" || exit 1
 mkdir "$DIR/release" || exit 1
-cp -r "$DIR/test" "$DIR/release" || exit 1
-cp "$DIR/appleSyncReports.js" "$DIR/release" || exit 1
+
+# PRIVATE CONTENT
+# cp -r "$DIR/test" "$DIR/release" || exit 1
+
+cp "$DIR/getAppStoreReport.js" "$DIR/release" || exit 1
 cp "$DIR/package.json" "$DIR/release" || exit 1
 cp "$DIR/README.md" "$DIR/release" || exit 1
 npm publish "$DIR/release" || exit 1
