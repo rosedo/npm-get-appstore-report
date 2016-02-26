@@ -1,10 +1,11 @@
-// does not work in strict mode
+'use strict';
 
-var _ = require('lodash');
 var path = require('path');
 var fs = require('fs');
+var _ = require('lodash');
 var AutoIngestTool = require('autoingesttool');
-var csv = require('./csv')({
+var camelCase = require('camelcase');
+var csv = require('csv-each')({
     delimiter: '\t',
     raiseOnEmptyLines: false,
     trimColumns: true,
@@ -12,24 +13,15 @@ var csv = require('./csv')({
     skipEmptyLines: true,
     handleQuotes: false,
 });
-var promiseUtilsModule = require('./promiseUtils');
-var camelCase = require('./camelCase');
+var promiseUtils = require('./promiseUtils');
 
 var defaultOptions = {
 };
 
 module.exports = new_();
 function new_(mainOptions) {
-    mainOptions = _.cloneDeep(mainOptions || {});
+    mainOptions = _.clone(mainOptions || {});
     _.defaultsDeep(mainOptions, defaultOptions);
-
-    // does not work in strict mode
-    Promise = (typeof Promise === 'undefined') ? mainOptions.Promise : Promise;
-
-    if (Promise === undefined) {
-        throw new Error('missing `Promise` dependency injection or global variable');
-    }
-    var promiseUtils = promiseUtilsModule(Promise);
     return _.assign(new_.bind(), {
         execute: execute,
         findFirstReportDate: findFirstReportDate,

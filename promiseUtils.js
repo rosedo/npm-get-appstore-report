@@ -1,23 +1,19 @@
 'use strict';
 
-var PromiseClass;
-module.exports = function(promiseClass) {
-    PromiseClass = promiseClass;
-    return {
-        auto: auto,
-        use: use,
-        thenEachSeries: thenEachSeries,
-    };
+module.exports = {
+    auto: auto,
+    use: use,
+    thenEachSeries: thenEachSeries,
 };
 
 function auto(resolve, reject) {
     return function(err, result) {
         return err ? reject(err) : resolve(result);
     };
-};
+}
 
 function use(argument, thenCallback, catchCallback) {
-    var p = PromiseClass.resolve(argument);
+    var p = Promise.resolve(argument);
     if (thenCallback) {
         p.then(thenCallback);
     }
@@ -25,14 +21,14 @@ function use(argument, thenCallback, catchCallback) {
         p.catch(catchCallback);
     }
     return p;
-};
+}
 
 function thenEachSeries(promise, iterator, catchCallback) {
-    if (!(promise instanceof PromiseClass)) {
-        promise = PromiseClass.resolve(promise);
+    if (!(promise instanceof Promise)) {
+        promise = Promise.resolve(promise);
     }
     promise = promise.then(function(obj) {
-        return new PromiseClass(function(resolve, reject) {
+        return new Promise(function(resolve, reject) {
             obj = obj || [];
             var nextKey = _keyIterator(obj);
             var key = nextKey();
@@ -41,11 +37,11 @@ function thenEachSeries(promise, iterator, catchCallback) {
                     return resolve();
                 }
                 var iteratorPromise = iterator(obj[key]);
-                if (!(iteratorPromise instanceof PromiseClass)) {
-                    iteratorPromise = PromiseClass.resolve(iteratorPromise);
+                if (!(iteratorPromise instanceof Promise)) {
+                    iteratorPromise = Promise.resolve(iteratorPromise);
                 }
                 iteratorPromise.then(function() {
-                    return new PromiseClass(function(resolve2, reject2) {
+                    return new Promise(function(resolve2, reject2) {
                         key = nextKey();
                         iterate();
                     });

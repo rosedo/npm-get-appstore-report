@@ -27,7 +27,7 @@ var getAppStoreReport = require('get-appstore-report');
 
 ### Download an iTunes Connect Report
 ```js
-getAppStoreReportModule.execute({
+getAppStoreReport.execute({
 
   // Mandatory options from AutoIngestTool
   username: '…',

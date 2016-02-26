@@ -10,7 +10,7 @@ var getAppStoreReport = getAppStoreReportModule(_.assign({}, privateOptions, {
     report_type: 'Sales',
     report_subtype: 'Summary',
     date_type: 'Daily',
-    report_date: '20150223',
+    report_date: '20160201',
     outputDirectory: path.join(__dirname, '/outputDirectory'),
     returnJson: true,
     deleteDownloadedFiles: true,

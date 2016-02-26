@@ -5,6 +5,7 @@
       "path": ".",
       "folder_exclude_patterns": [
         "release",
+        "test/outputDirectory",
       ],
       "file_exclude_patterns": [
         "npm-debug.log",
@@ -13,5 +14,6 @@
   ],
   "settings": {
     "translate_tabs_to_spaces": false,
+    "tab_size": 4,
   },
 }
